@@ -186,11 +186,9 @@ app.bindForms = function(){
             console.log(responsePayload)
             if(statusCode == 403){
               // log the user out
-              console.log("illi")
-
+             
               app.logUserOut();
-             console.log("illi")
-
+             
             } else {
 
               // Try to get the error from the api, or set a default error message
@@ -396,7 +394,7 @@ app.loadMenuPage=function(){
   app.client.request(undefined,'api/menu','GET',undefined,undefined,function(statusCode,responsePayload){
     if(statusCode==200){
       
-       // Determine how many checks the user has
+       // Determine how many pizza the user has
        var allPizza = typeof(responsePayload.items) == 'object' && responsePayload.items instanceof Array && responsePayload.items.length > 0 ? responsePayload.items : [];
       
        if(allPizza.length > 0){
@@ -500,10 +498,10 @@ app.loadCheckOutPage=function(){
      if(statusCode == 200){
        console.log(responsePayload)
 
-       // Determine how many checks the user has
+       // Determine how many pizza the user has
        var allPizza = typeof(responsePayload.cartObjects) == 'object' && responsePayload.cartObjects instanceof Array && responsePayload.cartObjects.length > 0 ? responsePayload.cartObjects : [];
       
-       // Determine how many checks the user has
+       // Determine how many pizza the user has
        var allPizza = typeof(responsePayload.cartObjects) == 'object' && responsePayload.cartObjects instanceof Array && responsePayload.cartObjects.length > 0 ? responsePayload.cartObjects : [];
       
        if(allPizza.length > 0){
@@ -548,12 +546,6 @@ app.loadCheckOutPage=function(){
        
              }
             });
-        
-               
-            
-         
-        
-
  
   }
      }});
@@ -653,13 +645,13 @@ app.loadCartDataPage=function(){
        }
      } else {
        // If the request comes back as something other than 200, log the user our (on the assumption that the api is temporarily down or the users token is bad)
-       //app.logUserOut();
-       console.log(":Onde")
+       app.logUserOut();
+       //console.log(":Onde")
      }
    });
  } else {
-   //app.logUserOut();
-   console.log(":Erdu")
+   app.logUserOut();
+   //console.log(":Erdu")
  }
 
 
